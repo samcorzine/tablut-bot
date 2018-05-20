@@ -112,6 +112,7 @@ class Piece:
             else:
                 break
             y_counter -= 1
+        return valid_moves
 
 
 
