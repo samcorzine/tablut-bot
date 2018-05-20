@@ -1,10 +1,11 @@
-class Game():
+class Game:
     def __init__(self, board, next_player, winner):
         self.board = board
         self.next_player = next_player
         self.winner = winner
 
     def defense_pieces_non_king(self):
+
         pieces = []
         x_counter = 0
         while x_counter < 9:
@@ -14,6 +15,7 @@ class Game():
                     pieces.append(Piece(x_counter, y_counter, 1, False))
                 y_counter += 1
             x_counter += 1
+        return pieces
 
     def attack_pieces(self):
         pieces = []
@@ -25,6 +27,7 @@ class Game():
                     pieces.append(Piece(x_counter, y_counter, -1, False)
                 y_counter += 1
             x_counter += 1
+        return pieces
 
     def king(self):
         x_counter = 0
@@ -35,6 +38,7 @@ class Game():
                     return Piece(x_counter, y_counter, 1, True)
                 y_counter += 1
             x_counter += 1
+
 
     def attack_valid_moves(self):
         attack_pieces = self.attack_pieces_non_king()
@@ -49,9 +53,18 @@ class Game():
         for piece in defense_pieces:
             moves[(piece.x, piece.y)] = piece.valid_moves(self.board)
 
+    def lookahead(self, piece, move):
+        new_board = self.board
+        new_board[move.startx][move.starty] = 0
+        if piece.is_king == True:
+            new_board[move.endx][move.endy] = 10
+        else:
+            new_board[move.endx][move.endy] = piece.team
+        return new_board
 
 
-class Piece():
+
+class Piece:
     def __init__(self, x, y, team, is_king):
         self.x = x
         self.y = y
@@ -96,6 +109,7 @@ class Piece():
             y_counter -= 1
             else:
                 break
+
 
 
 class Move():
