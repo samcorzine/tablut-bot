@@ -64,6 +64,8 @@ class Game:
 
 
 
+
+
 class Piece:
     def __init__(self, x, y, team, is_king):
         self.x = x
@@ -106,9 +108,9 @@ class Piece:
             if board[self.x][endy] == 0:
                 if self.x, endy != 4, 4:
                     valid_moves.append((self.x, endy))
-            y_counter -= 1
             else:
                 break
+            y_counter -= 1
 
 
 
