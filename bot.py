@@ -5,7 +5,6 @@ class Game:
         self.winner = winner
 
     def defense_pieces_non_king(self):
-
         pieces = []
         x_counter = 0
         while x_counter < 9:
@@ -45,6 +44,7 @@ class Game:
         moves = {}
         for piece in attack_pieces:
             moves[(piece.x , piece.y)] = piece.valid_moves(self.board)
+        return moves
 
     def defense_valid_moves(self):
         defense_pieces = self.defense_pieces()
@@ -52,6 +52,7 @@ class Game:
         moves = {}
         for piece in defense_pieces:
             moves[(piece.x, piece.y)] = piece.valid_moves(self.board)
+        return moves
 
     def lookahead(self, piece, move):
         new_board = self.board
@@ -114,7 +115,7 @@ class Piece:
 
 
 
-class Move():
+class Move:
     def __init__(self, player, startx, starty, endx, endy):
         self.player = player
         self.startx = startx
