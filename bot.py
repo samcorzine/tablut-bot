@@ -64,7 +64,7 @@ class Piece():
         while x_counter < 9:
             endx = x_counter + 1
             if board[endx][self.y] == 0:
-                if endx != 4  and self.y != 4:
+                if endx != 4, self.y != 4, 4 :
                     valid_moves.append((endx, self.y))
             else:
                 break
@@ -73,7 +73,7 @@ class Piece():
         while x_counter >= 0:
             endx = x_counter - 1
             if board[endx][self.y] == 0:
-                if endx != 4 and self.y != 4:
+                if endx != 4, self.y != 4, 4:
                     valid_moves.append((endx, self.y))
             else:
                 break
@@ -82,7 +82,7 @@ class Piece():
         while y_counter < 9:
             endy = y_counter + 1
             if board[self.x][endy] == 0:
-                if self.x, self.y != 4, 4:
+                if self.x, endy != 4, 4:
                     valid_moves.append((self.x, endy))
             else:
                 break
@@ -91,7 +91,7 @@ class Piece():
         while y_counter >= 0:
             endy = y_counter - 1
             if board[self.x][endy] == 0:
-                if self.x != 4 and endy != 4:
+                if self.x, endy != 4, 4:
                     valid_moves.append((self.x, endy))
             y_counter -= 1
             else:
